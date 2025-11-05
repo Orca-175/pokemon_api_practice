@@ -38,12 +38,13 @@ class _HomeState extends State<Home> {
         SizedBox(height: 30.0),
         Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Wrap(
+              direction: Axis.horizontal,
+              alignment: WrapAlignment.center,
               children: [
                 for (final (index, ability) in pokemon.abilities.indexed) 
                   if (index < pokemon.abilities.length - 1) 
-                    Text('$ability | ', style: TextStyle(fontSize: 20.0)) 
+                    Text('$ability, ', style: TextStyle(fontSize: 20.0)) 
                   else
                     Text(ability, style: TextStyle(fontSize: 20.0)) 
               ],
@@ -106,16 +107,16 @@ class HomeTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                SizedBox(height: 40.0),
                 FilledButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/search');
+                    Navigator.pushReplacementNamed(context, '/search');
                   }, 
                   child: Row(
                     mainAxisSize: MainAxisSize.min, 
