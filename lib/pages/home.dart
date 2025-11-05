@@ -15,10 +15,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var argument = ModalRoute.of(context)?.settings.arguments;
     if (argument is !Pokemon) {
+      String message = argument.toString();
       return HomeTemplate(
         children: [
           SizedBox(height: 60.0),
-          Text(argument.toString().substring(10), style: TextStyle(fontSize: 20.0)),
+          Text(message.substring(message.indexOf(' ')), style: TextStyle(fontSize: 20.0)),
         ],
       );
     }
@@ -114,7 +115,7 @@ class HomeTemplate extends StatelessWidget {
                 SizedBox(height: 40.0),
                 FilledButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                    Navigator.pushNamed(context, '/search');
                   }, 
                   child: Row(
                     mainAxisSize: MainAxisSize.min, 

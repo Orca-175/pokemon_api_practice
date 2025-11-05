@@ -11,9 +11,8 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
 
   void getPokemon() async {
-    Pokemon pokemon = Pokemon(name: 'charizard');
     try {
-      await pokemon.getPokemon();
+      Pokemon pokemon = await Pokemon.fromNameOrId('charizard');
       if (mounted) {
         Navigator.pushReplacementNamed(context, '/home', arguments: pokemon);
       }
